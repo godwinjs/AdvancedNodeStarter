@@ -8,7 +8,7 @@
     "server": "nodemon index.js --ignore tests",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "NPM_CONFIG_PRODUCTION=false npm install --legacy-peer-deps --prefix client",
+    "build": "NPM_CONFIG_PRODUCTION=false npm install && npm install --legacy-peer-deps --prefix client",
     "heroku-postbuild": "npm run build"
   },
   "author": "",
