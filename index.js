@@ -1,8 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
-require('dotenv').config()
-console.log(process.env.mongoURI)
+//
+require('dotenv').config();
+//
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
