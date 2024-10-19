@@ -1,7 +1,6 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "homepage" : "http://godwinjs.github.io/blogidy",
   "private": true,
   "proxy": {
     "/auth/*": {
