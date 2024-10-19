@@ -1,6 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
+  "homepage" : "http://godwinjs.github.io/blogidy",
   "private": true,
   "proxy": {
     "/auth/*": {
@@ -20,7 +21,8 @@
     "react-scripts": "1.1.5",
     "redux": "3.7.1",
     "redux-form": "7.0.1",
-    "redux-thunk": "2.2.0"
+    "redux-thunk": "2.2.0",
+    "server": "file:.."
   },
   "scripts": {
     "start": "react-scripts start",
