@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
+require('dotenv').config()
+console.log(process.env.mongoURI)
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
@@ -8,6 +10,7 @@ const keys = require('./config/keys');
 require('./models/User');
 require('./models/Blog');
 require('./services/passport');
+
 
 mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongoURI, {
