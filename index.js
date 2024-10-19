@@ -35,11 +35,13 @@ require('./routes/authRoutes')(app);
 require('./routes/blogRoutes')(app);
 
 if (['production'].includes(process.env.NODE_ENV)) {
-  app.use(express.static('client/build'));
+  // app.use(express.static('client/build'));
+  app.use(express.static('public'));
 
   const path = require('path');
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve('client', 'build', 'index.html'));
+    res.sendFile(path.resolve('public', 'index.html'));
+    // res.sendFile(path.resolve('client', 'build', 'index.html'));
   });
 }
 
