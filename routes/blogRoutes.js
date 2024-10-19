@@ -14,9 +14,24 @@ module.exports = app => {
   });
 
   app.get('/api/blogs', requireLogin, async (req, res) => {
-    const blogs = await Blog.find({ _user: req.user.id });
+    // redis
+    const redis = require('redis')
+    const redisUrl = 'redis://127.0.0.1:6379'
+    const client = redis.createClient(redisUrl)
 
+    // mongo
+    const blogs = await Blog.find({ _user: req.user.id });
+    // redis: get cached data that exist in the redisDB for this query [req.user.id]
+    const cachedBlogs = redis.get(req.user.id)
+
+    // if cashed data exists, res to this req with the cached data
+    if(cachedBlogs) {
+      return res.send(JSON.parse(cachedBlogs))
+    }
+
+    // if not, respond to the request with the data from mongoDB and update/cache the data for the query in redisDB
     res.send(blogs);
+    client.set(req.user.id, JSON.stringify(blogs))
   });
 
   app.post('/api/blogs', requireLogin, async (req, res) => {
