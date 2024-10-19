@@ -26,10 +26,12 @@ module.exports = app => {
 
     // if cashed data exists, res to this req with the cached data
     if(cachedBlogs) {
+      console.log('serving from cache')
       return res.send(JSON.parse(cachedBlogs))
     }
 
     // if not, respond to the request with the data from mongoDB and update/cache the data for the query in redisDB
+      console.log('serving from mongoDB')
     res.send(blogs);
     client.set(req.user.id, JSON.stringify(blogs))
   });
