@@ -35,7 +35,7 @@ require('./routes/authRoutes')(app);
 require('./routes/blogRoutes')(app);
 
 if (['production'].includes(process.env.NODE_ENV)) {
-  // app.use(express.static('client/build'));
+  app.use(express.static('client/build'));
   // app.use(express.static('public'));
 
   const path = require('path');
